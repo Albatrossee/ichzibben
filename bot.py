@@ -234,10 +234,11 @@ def valueCardNumber(message):
     bot.delete_message(message.chat.id, message.message_id - 1)
     global card_number
     card_number = message.text
-    if len(message.text) == 19:
+    if len(message.text) > 15:
         bot.send_message(message.from_user.id, "Введите реквизиты держателя карты. Пример: Иванов Иван.")
         bot.register_next_step_handler(message, userData)
     else:
+        bot.send_message(message.from_user.id, 'Введите действительный номер карты')
         yesButton(message)
 
 
