@@ -239,7 +239,8 @@ def valueCardNumber(message):
         bot.register_next_step_handler(message, userData)
     else:
         bot.send_message(message.from_user.id, 'Введите действительный номер карты')
-        yesButton(message)
+        bot.register_next_step_handler(message, valueCardNumber)
+  
 
 
 def userData(message):
