@@ -112,8 +112,8 @@ def getMyXLM(message):
     bot.send_message(
         message.chat.id,
         'Выберите способ обмена\n' +
-        '1 XLM -> 2.85 UAH\n' +
-        '1 XLM -> 5.76 RUB',
+        '1 XLM -> 2.79 UAH\n' +
+        '1 XLM -> 5.88 RUB',
         reply_markup=keyboard
     )
 
@@ -130,7 +130,8 @@ def gettingUAH(message):
     bot.send_message(
         message.chat.id,
         'Введите количество XLM\n' +
-        'Курс: 2.85',
+        'Курс: 2.79\n' +
+        "Резерв: 163705",
         reply_markup=keyboard
     )
     bot.register_next_step_handler(message, valueXLMUAH)
@@ -147,7 +148,8 @@ def gettingRUB(message):
     bot.send_message(
         message.chat.id,
         'Введите количество XLM\n' +
-        'Курс: 5.76',
+        'Курс: 5.88\n' +
+        "Резерв: 163705",
         reply_markup=keyboard
     )
     bot.register_next_step_handler(message, valueXLMRUB)
