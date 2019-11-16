@@ -429,13 +429,13 @@ def support(message):
             telebot.types.InlineKeyboardButton("Повернутись", callback_data='menu')
         )
         bot.delete_message(message.chat.id, message.message_id)
-        bot.send_message(message.chat.id, "Контакт оператора: @MrPhotoshops", reply_markup=keyboard)
+        bot.send_message(message.chat.id, "Контакт оператора: @girlslviv", reply_markup=keyboard)
     else:
         keyboard.row(
             telebot.types.InlineKeyboardButton("Back", callback_data='menu')
         )
         bot.delete_message(message.chat.id, message.message_id)
-        bot.send_message(message.chat.id, "Contact to support: @MrPhotoshops", reply_markup=keyboard)
+        bot.send_message(message.chat.id, "Contact to support: @girlslviv", reply_markup=keyboard)
 
 
 
@@ -458,7 +458,7 @@ def faq(message):
                                           "Уточнюємо адрес, дівчина через 40-60 хв. приїжджає.\n\n"
                                           "🔥 Чи є у вас своє місце?\n"
                                           " Так, кожна дівчина може прийняти у себе (квартири по місті.) Виїзд за межі міста обговорюється\n\n"
-                                          "Залишились питання?\nПишіть: @MrPhotoshops"
+                                          "Залишились питання?\nПишіть: @girlslviv"
 
                          , reply_markup=keyboard)
     else:
@@ -474,7 +474,7 @@ def faq(message):
                                           "This is a forced move that the girls went through when they were called young without money / lied to pay after / threatened. Therefore, we have to work on a different principle.\n\n"
                                           "🔥 Do you have a place?\n"
                                           " Yes, every girl can take (apartments in the city.) Traveling outside the city is discussed\n\n"
-                                          "Any questions left? \nWrite: @MrPhotoshops"
+                                          "Any questions left? \nWrite: @girlslviv"
 
                          , reply_markup=keyboard)
 
