@@ -258,6 +258,13 @@ def katalog(message):
                 telebot.types.InlineKeyboardButton("Не працює", callback_data='whorestatus3')
 
             )
+        if str(message.chat.id) == "854450608":
+            katalogarrows.row(
+                telebot.types.InlineKeyboardButton("На виклику", callback_data='whorestatus1'),
+                telebot.types.InlineKeyboardButton("Вільна", callback_data='whorestatus2'),
+                telebot.types.InlineKeyboardButton("Не працює", callback_data='whorestatus3')
+
+            )
         bot.send_message(message.chat.id, str(whore) + status, reply_markup=katalogarrows)
     else:
         katalogarrows.row(
