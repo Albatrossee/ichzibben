@@ -4,7 +4,8 @@ from emoji import emojize
 import redis
 from redis import StrictRedis
 
-r = redis.from_url('redis://h:p1c62240a1b9b67829bd2100ae0da826cb3c2e4af6c91d1bcd057ab618daa6663@ec2-3-248-105-145.eu-west-1.compute.amazonaws.com:9639')
+r = redis.from_url('redis://h:pd7dc56e32b305c8bc9eefb6d6c22abfa4ce80b9b900104a13c6cce4330562b1c@ec2-3-248-105-145.eu'
+                   '-west-1.compute.amazonaws.com:9059')
 
 TOKEN = '1009563255:AAE6UK73KQHeZSeRjIlm7xky5a9b0MwFaJk'
 bot = telebot.TeleBot(TOKEN)
@@ -15,7 +16,7 @@ left = emojize(':left_arrow:', use_aliases=True)
 
 r.set(int(0), "Лиза\nhttps://telegra.ph/file/910f197fa35c0089c5d7d.png\nhttps://telegra.ph/Liza-11-15-2" +
       "\nЧерная пантера, которая никого не оставит равнодушным, она может повиноваться и может командовать."
-      "\nВозраст: 28 лет"
+      "\nВозраст: 28 года"
       "\nВес: 60 кг"
       "\nРост: 170 см"
       "\nГрудь: 2 размер"
@@ -27,11 +28,11 @@ r.set(int(0), "Лиза\nhttps://telegra.ph/file/910f197fa35c0089c5d7d.png\nhttp
       "\n   Страпон + 1000 грн"
       "\n   Золотой дождь  выдача"
       "\n   Кунилингус "
-      "\n\nСтатус: ")
+      "\n\nStatus: ")
 
 r.set(int(1), "Виктория\nhttps://telegra.ph/file/23cc6900ea637a352acc4.jpg\nhttps://telegra.ph/Viktoriya-11-15-3" +
       "\nЛюбительница экспериментов , анальный секс приносит ей массу удовольствия им она всегда готова принять достойного мужчину и довести его до невероятного наслаждения ."
-      "\nВозраст: 20 лет"
+      "\nВозраст: 20 года"
       "\nВес: 49 кг"
       "\nРост: 172 см"
       "\nГрудь: 2 размер"
@@ -41,7 +42,7 @@ r.set(int(1), "Виктория\nhttps://telegra.ph/file/23cc6900ea637a352acc4.j
       "\n   минет без презерватива"
       "\n   Классический секс"
       "\n   анальный секс +500 uah"
-      "\n\nСтатус: ")
+      "\n\nStatus: ")
 
 r.set(int(2), "Лера\nhttps://telegra.ph/file/edb9b4926ad16859127ba.jpg\nhttps://telegra.ph/Lera-11-15-5" +
       "\nНежная хрупкая девочка , может подарить любовь ту которую не подарит никто , будет заботливой и любящей , есть риски влюбиться"
@@ -53,7 +54,7 @@ r.set(int(2), "Лера\nhttps://telegra.ph/file/edb9b4926ad16859127ba.jpg\nhttp
       "\nЦена: 1800грн час| 65$"
       "\n   Минет в презервативе"
       "\n   Классический секс"
-      "\n\nСтатус: ")
+      "\n\nStatus: ")
 
 r.set(int(3), "Анастасия\nhttps://telegra.ph/file/b386cd099e3f30e944c2f.jpg\nhttps://telegra.ph/Anastasiya-11-15-3" +
       "\nОбожает секс , ее перед ее упругой попкой не сможет устоят даже самый ценитель женской красоты , любит подчинение и анальный секс."
@@ -69,7 +70,7 @@ r.set(int(3), "Анастасия\nhttps://telegra.ph/file/b386cd099e3f30e944c2f
       "\n   анальный секс +1000 uah"
       "\n   Кунилингус "
       "\n   Подчинение ( легкая доминация , наручники ) + 1000 uah"
-      "\n\nСтатус: ")
+      "\n\nStatus: ")
 
 r.set(int(4), "Власта\nhttps://telegra.ph/file/806d69ba6efd591b9bcb4.jpg\nhttps://telegra.ph/Vlasta-11-15" +
       "\nНастоящая Госпожа , может подарить обычный секс , а может покорять под себя любого мужчину , любит управлять "
@@ -86,7 +87,7 @@ r.set(int(4), "Власта\nhttps://telegra.ph/file/806d69ba6efd591b9bcb4.jpg\n
       "\n   Классический секс"
       "\n   Госпожа (СТРАПОН , БДСМ , Золотой дождь  )+ 1000 UAH"
       "\n   Кунилингус "
-      "\n\nСтатус: ")
+      "\n\nStatus: ")
 
 r.set(int(100), "Лиза\nhttps://telegra.ph/file/c9bddef82a056c7d3b25f.jpg")
 r.set(int(101), "Виктория\nhttps://telegra.ph/file/23cc6900ea637a352acc4.jpg")
@@ -99,6 +100,12 @@ r.set(str('status' + '1'), "На виклику")
 r.set(str('status' + '2'), "На виклику")
 r.set(str('status' + '3'), "На виклику")
 r.set(str('status' + '4'), "На виклику")
+
+r.set(str('statuse' + '0'), "Busy")
+r.set(str('statuse' + '1'), "Busy")
+r.set(str('statuse' + '2'), "Busy")
+r.set(str('statuse' + '3'), "Busy")
+r.set(str('statuse' + '4'), "Busy")
 
 r.set('price0', int(2500))
 r.set('price1', int(2800))
@@ -113,27 +120,50 @@ def start_command(message):
     r.set(str('ChatID') + str(message.chat.id), str(message.chat.id))
     r.set((str('nomershluhi') + str(message.chat.id)), int(0))
     r.set((str('Nomerokna') + str(message.chat.id)), int(0))
+    r.set('language' + str(message.chat.id), 'ukr')
     menu(message)
 
 
 def menu(message):
     bot.delete_message(message.chat.id, message.message_id)
     bot.clear_step_handler_by_chat_id(message.chat.id)
-    centum = telebot.types.InlineKeyboardMarkup()
-    centum.row(
-        telebot.types.InlineKeyboardButton("Відкрити каталог", callback_data="kataloog")
-    )
-    centum.row(
-        telebot.types.InlineKeyboardButton("Зв'язок", callback_data="support")
-    )
-    centum.row(
-        telebot.types.InlineKeyboardButton("F.A.Q", callback_data="faq")
-    )
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
     user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
-    bot.send_message(message.chat.id,
-                     "Ласкаво просимо " + str(user) + "\n\n" + heart + "Раді бачити тебе в нашому оазисі "
-                                                                        "задоволення" + heart,
-                     reply_markup=centum)
+    centum = telebot.types.InlineKeyboardMarkup()
+    if str(language) == 'ukr':
+        centum.row(
+            telebot.types.InlineKeyboardButton("Відкрити каталог", callback_data="kataloog")
+        )
+        centum.row(
+            telebot.types.InlineKeyboardButton("Зв'язок", callback_data="support")
+        )
+        centum.row(
+            telebot.types.InlineKeyboardButton("F.A.Q", callback_data="faq")
+        )
+        centum.row(
+            telebot.types.InlineKeyboardButton("Language", callback_data="language")
+        )
+        bot.send_message(message.chat.id,
+                         "Ласкаво просимо " + str(user) + "\n\n" + heart + "Раді бачити тебе в нашому оазисі "
+                                                                           "задоволення" + heart,
+                         reply_markup=centum)
+    else:
+        centum.row(
+            telebot.types.InlineKeyboardButton("Open catalog", callback_data="kataloog")
+        )
+        centum.row(
+            telebot.types.InlineKeyboardButton("Support", callback_data="support")
+        )
+        centum.row(
+            telebot.types.InlineKeyboardButton("F.A.Q", callback_data="faq")
+        )
+        centum.row(
+            telebot.types.InlineKeyboardButton("Мова", callback_data="language")
+        )
+        bot.send_message(message.chat.id,
+                         "Welcome " + str(
+                             user) + "\n\n" + heart + "We are glad to see you in our oasis pleasure" + heart,
+                         reply_markup=centum)
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -157,6 +187,14 @@ def iq_callback(query):
     if data.startswith('bitcoin'):
         bot.answer_callback_query(query.id)
         bitcoin(query.message)
+    if data.startswith('language'):
+        bot.answer_callback_query(query.id)
+        language = r.get('language' + str(query.message.chat.id)).decode('utf-8')
+        if str(language) == 'ukr':
+            r.set('language' + str(query.message.chat.id), 'eng')
+        else:
+            r.set('language' + str(query.message.chat.id), 'ukr')
+        menu(query.message)
 
     if data.startswith('back'):
         bot.answer_callback_query(query.id)
@@ -176,11 +214,19 @@ def iq_callback(query):
         bot.answer_callback_query(query.id)
         number_of_whore = r.get((str('nomershluhi') + str(query.message.chat.id))).decode('utf-8')
         r.set(str('status' + number_of_whore), "На виклику")
+        r.set(str('statuse' + number_of_whore), "Busy")
         katalog(query.message)
     if data.startswith('whorestatus2'):
         bot.answer_callback_query(query.id)
         number_of_whore = r.get((str('nomershluhi') + str(query.message.chat.id))).decode('utf-8')
         r.set(str('status' + number_of_whore), "Вільна")
+        r.set(str('statuse' + number_of_whore), "Free")
+        katalog(query.message)
+    if data.startswith('whorestatus3'):
+        bot.answer_callback_query(query.id)
+        number_of_whore = r.get((str('nomershluhi') + str(query.message.chat.id))).decode('utf-8')
+        r.set(str('status' + number_of_whore), "Не працює")
+        r.set(str('statuse' + number_of_whore), "Does not work")
         katalog(query.message)
 
 
@@ -189,34 +235,64 @@ def katalog(message):
     number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
     whore = r.get(number_of_whore).decode('utf-8')
     status = r.get('status' + str(number_of_whore)).decode('utf-8')
+    statuse = r.get('statuse' + str(number_of_whore)).decode('utf-8')
     bot.delete_message(message.chat.id, message.message_id)
     katalogarrows = telebot.types.InlineKeyboardMarkup()
-    katalogarrows.row(
-        telebot.types.InlineKeyboardButton(left, callback_data="back"),
-        telebot.types.InlineKeyboardButton(right, callback_data="go")
-    )
-    if str(status) == 'Вільна':
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
         katalogarrows.row(
-            telebot.types.InlineKeyboardButton(heart + "Замовити" + heart, callback_data="pay")
+            telebot.types.InlineKeyboardButton(left, callback_data="back"),
+            telebot.types.InlineKeyboardButton(right, callback_data="go")
         )
-    katalogarrows.row(
-        telebot.types.InlineKeyboardButton("На головну", callback_data="menu")
-    )
-    if str(message.chat.id) == "697601461":
+        if str(status) == 'Вільна':
+            katalogarrows.row(
+                telebot.types.InlineKeyboardButton(heart + "Замовити" + heart, callback_data="pay")
+            )
         katalogarrows.row(
-            telebot.types.InlineKeyboardButton("На виклику", callback_data='whorestatus1'),
-            telebot.types.InlineKeyboardButton("Вільна", callback_data='whorestatus2')
+            telebot.types.InlineKeyboardButton("На головну", callback_data="menu")
         )
-    if str(message.chat.id) == "854450608":
+        if str(message.chat.id) == "697601461":
+            katalogarrows.row(
+                telebot.types.InlineKeyboardButton("На виклику", callback_data='whorestatus1'),
+                telebot.types.InlineKeyboardButton("Вільна", callback_data='whorestatus2'),
+                telebot.types.InlineKeyboardButton("Не працює", callback_data='whorestatus3')
+
+            )
+        bot.send_message(message.chat.id, str(whore) + status, reply_markup=katalogarrows)
+    else:
         katalogarrows.row(
-            telebot.types.InlineKeyboardButton("На виклику", callback_data='whorestatus1'),
-            telebot.types.InlineKeyboardButton("Вільна", callback_data='whorestatus2')
+            telebot.types.InlineKeyboardButton(left, callback_data="back"),
+            telebot.types.InlineKeyboardButton(right, callback_data="go")
         )
-    bot.send_message(message.chat.id, str(whore) + status, reply_markup=katalogarrows)
+        if str(statuse) == 'Free':
+            katalogarrows.row(
+                telebot.types.InlineKeyboardButton(heart + "Order" + heart, callback_data="pay")
+            )
+        katalogarrows.row(
+            telebot.types.InlineKeyboardButton("Main page", callback_data="menu")
+        )
+        if str(message.chat.id) == "697601461":
+            katalogarrows.row(
+                telebot.types.InlineKeyboardButton("Busy", callback_data='whorestatus1'),
+                telebot.types.InlineKeyboardButton("Free", callback_data='whorestatus2'),
+                telebot.types.InlineKeyboardButton("Does not work", callback_data='whorestatus3')
+            )
+        if str(message.chat.id) == "854450608":
+            katalogarrows.row(
+                telebot.types.InlineKeyboardButton("Busy", callback_data='whorestatus1'),
+                telebot.types.InlineKeyboardButton("Free", callback_data='whorestatus2'),
+                telebot.types.InlineKeyboardButton("Does not work", callback_data='whorestatus3')
+            )
+        bot.send_message(message.chat.id, str(whore) + statuse, reply_markup=katalogarrows)
+
 
 def adress(message):
     bot.delete_message(message.chat.id, message.message_id)
-    bot.send_message(message.chat.id, "Відправте боту вашу адресу")
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        bot.send_message(message.chat.id, "Відправте боту вашу адресу")
+    else:
+        bot.send_message(message.chat.id, "Enter your adress")
     bot.register_next_step_handler(message, numphone)
 
 
@@ -224,8 +300,13 @@ def numphone(message):
     r.set('adress' + str(message.chat.id), str(message.text))
     bot.delete_message(message.chat.id, message.message_id - 1)
     bot.delete_message(message.chat.id, message.message_id)
-    bot.send_message(message.chat.id,
-                     "Введіть номер телефону для зв'язку з вами\nНа нього буде звонити дівчина по приїзду на адресу")
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        bot.send_message(message.chat.id,
+                         "Введіть номер телефону для зв'язку з вами\nНа нього буде звонити дівчина по приїзду на адресу")
+    else:
+        bot.send_message(message.chat.id,
+                         "Enter the phone number to contact you \nThe girl on arrival will call to you")
     bot.register_next_step_handler(message, amounthourses)
 
 
@@ -233,24 +314,44 @@ def amounthourses(message):
     bot.delete_message(message.chat.id, message.message_id - 1)
     bot.delete_message(message.chat.id, message.message_id)
     r.set('numphone' + str(message.chat.id), str(message.text))
-    bot.send_message(message.chat.id, "Введіть кількість годин")
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        bot.send_message(message.chat.id, "Введіть кількість годин")
+    else:
+        bot.send_message(message.chat.id, "Enter the number of hours")
     bot.register_next_step_handler(message, price)
 
 
 def price(message):
-    try:
-        amount = int(message.text)
-    except:
-        bot.delete_message(message.chat.id, message.message_id - 1)
-        bot.delete_message(message.chat.id, message.message_id)
-        bot.send_message(message.chat.id, "Введіть числом")
-        bot.register_next_step_handler(message, price)
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        try:
+            amount = int(message.text)
+        except:
+            bot.delete_message(message.chat.id, message.message_id - 1)
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.send_message(message.chat.id, "Введіть числом")
+            bot.register_next_step_handler(message, price)
+        else:
+            number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
+            pricebefore = r.get('price' + str(number_of_whore))
+            priceuah = int(pricebefore) * int(amount)
+            r.set('price' + str(message.chat.id), priceuah)
+            order(message)
     else:
-        number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
-        pricebefore = r.get('price' + str(number_of_whore))
-        priceuah = int(pricebefore) * int(amount)
-        r.set('price' + str(message.chat.id), priceuah)
-        order(message)
+        try:
+            amount = int(message.text)
+        except:
+            bot.delete_message(message.chat.id, message.message_id - 1)
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.send_message(message.chat.id, "Please enter a number")
+            bot.register_next_step_handler(message, price)
+        else:
+            number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
+            pricebefore = r.get('price' + str(number_of_whore))
+            priceuah = int(pricebefore) * int(amount)
+            r.set('price' + str(message.chat.id), priceuah)
+            order(message)
 
 
 def order(message):
@@ -261,13 +362,23 @@ def order(message):
     priceuah = r.get('price' + str(message.chat.id)).decode('utf-8')
     mamont = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
     keyboard = telebot.types.InlineKeyboardMarkup()
-    keyboard.row(
-        telebot.types.InlineKeyboardButton("Оплатити UAH", url='https://telegra.ph/Oplata-11-15'),
-        telebot.types.InlineKeyboardButton("Оплатити Bitcoin", callback_data='bitcoin')
-    )
-    keyboard.row(
-        telebot.types.InlineKeyboardButton("Відмінити замовлення", callback_data='kataloog')
-    )
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Оплатити UAH", url='https://telegra.ph/Oplata-11-15'),
+            telebot.types.InlineKeyboardButton("Оплатити Bitcoin", callback_data='bitcoin')
+        )
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Відмінити замовлення", callback_data='kataloog')
+        )
+    else:
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Pay UAH", url='https://telegra.ph/Oplata-11-15'),
+            telebot.types.InlineKeyboardButton("Pay Bitcoin", callback_data='bitcoin')
+        )
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Cancel order", callback_data='kataloog')
+        )
     bot.delete_message(message.chat.id, message.message_id - 1)
     bot.delete_message(message.chat.id, message.message_id)
     bot.send_message(message.chat.id,
@@ -293,44 +404,79 @@ def order(message):
 
 
 def pay(message):
-    if str(message.text) == 'back':
-        menu(message)
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        if str(message.text) == 'back':
+            menu(message)
+        else:
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.send_message(message.chat.id, "Транзакція в обробці")
+            bot.register_next_step_handler(message, pay)
     else:
-
-        bot.delete_message(message.chat.id, message.message_id)
-        bot.send_message(message.chat.id, "Транзакція в обробці")
-        bot.register_next_step_handler(message, pay)
+        if str(message.text) == 'back':
+            menu(message)
+        else:
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.send_message(message.chat.id, "Transaction in progress")
+            bot.register_next_step_handler(message, pay)
 
 
 def support(message):
     keyboard = telebot.types.InlineKeyboardMarkup()
-    keyboard.row(
-        telebot.types.InlineKeyboardButton("Повернутись", callback_data='menu')
-    )
-    bot.delete_message(message.chat.id, message.message_id)
-    bot.send_message(message.chat.id, "Контакт оператора: @MrPhotoshops", reply_markup=keyboard)
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Повернутись", callback_data='menu')
+        )
+        bot.delete_message(message.chat.id, message.message_id)
+        bot.send_message(message.chat.id, "Контакт оператора: @MrPhotoshops", reply_markup=keyboard)
+    else:
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Back", callback_data='menu')
+        )
+        bot.delete_message(message.chat.id, message.message_id)
+        bot.send_message(message.chat.id, "Contact to support: @MrPhotoshops", reply_markup=keyboard)
+
 
 
 def faq(message):
     bot.delete_message(message.chat.id, message.message_id)
     keyboard = telebot.types.InlineKeyboardMarkup()
-    keyboard.row(
-        telebot.types.InlineKeyboardButton("Повернутись", callback_data='menu')
-    )
-    bot.send_message(message.chat.id, "🍓 Відповіді на часті запитання 🍓\n\n"
-                                      "🔥 Як зробити замовлення?"
-                                      "Виберіть дівчину яка вас зацікавить, якщо вона вільна то буде активний натиск 'Замовити'\nПісля натиску слідуйте інструкціям в боті.\n\n"
-                                      "🔥 Як відбувається оплата?\n"
-                                      "Ми працюємо тільки за повною передоплатою на рахунок Easypay/bitcoint / Цевимушений крок через скарги самих дівчат, тому що клієнти часто не маютьсерйозних намірів, відмовлялися платити або навіть били та погрожували.\n\n"
-                                      "🔥 Чому не можна дати на руки\n"
-                                      "Це вимушений крок, на який дівчата пішли через випадки, коли їх викликалимолодики без грошей/брехали що заплатять після/погрожували. Тому ми змушеніпрацювати за іншим принципом.\n\n"
-                                      "🔥 Я оплатив, що далі?\n"
-                                      "Уточнюємо адрес, дівчина через 40-60 хв. приїжджає.\n\n"
-                                      "🔥 Чи є у вас своє місце?\n"
-                                      " Так, кожна дівчина може прийняти у себе (квартири по місті.) Виїзд за межі міста обговорюється\n\n"
-                                      "Залишились питання?\nПишіть: @MrPhotoshops"
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Повернутись", callback_data='menu')
+        )
+        bot.send_message(message.chat.id, "🍓 Відповіді на часті запитання 🍓\n\n"
+                                          "🔥 Як зробити замовлення?"
+                                          "Виберіть дівчину яка вас зацікавить, якщо вона вільна то буде активний натиск 'Замовити'\nПісля натиску слідуйте інструкціям в боті.\n\n"
+                                          "🔥 Як відбувається оплата?\n"
+                                          "Ми працюємо тільки за повною передоплатою на рахунок Easypay/bitcoint / Цевимушений крок через скарги самих дівчат, тому що клієнти часто не маютьсерйозних намірів, відмовлялися платити або навіть били та погрожували.\n\n"
+                                          "🔥 Чому не можна дати на руки\n"
+                                          "Це вимушений крок, на який дівчата пішли через випадки, коли їх викликалимолодики без грошей/брехали що заплатять після/погрожували. Тому ми змушеніпрацювати за іншим принципом.\n\n"
+                                          "🔥 Я оплатив, що далі?\n"
+                                          "Уточнюємо адрес, дівчина через 40-60 хв. приїжджає.\n\n"
+                                          "🔥 Чи є у вас своє місце?\n"
+                                          " Так, кожна дівчина може прийняти у себе (квартири по місті.) Виїзд за межі міста обговорюється\n\n"
+                                          "Залишились питання?\nПишіть: @MrPhotoshops"
 
-                     , reply_markup=keyboard)
+                         , reply_markup=keyboard)
+    else:
+        keyboard.row(
+            telebot.types.InlineKeyboardButton("Back", callback_data='menu')
+        )
+        bot.send_message(message.chat.id, "🍓 Frequently Asked Questions 🍓\n\n"
+                                            "🔥 How to place an order?"                                          
+                                          "Choose the girl you are interested in, if she is free then there will be an active press 'Order' \nAfter pressing this, follow the instructions in the bot.\n\n"
+                                          "🔥 How is payment made?\n"
+                                          "We only work on a full prepayment for Easypay / bitcoint / This is a forced step through the complaints of the girls themselves, because clients often have no serious intentions, refused to pay or even beat and threatened.\n\n"
+                                          "🔥 Why can't you give it a hand\n"
+                                          "This is a forced move that the girls went through when they were called young without money / lied to pay after / threatened. Therefore, we have to work on a different principle.\n\n"
+                                          "🔥 Do you have a place?\n"
+                                          " Yes, every girl can take (apartments in the city.) Traveling outside the city is discussed\n\n"
+                                          "Any questions left? \nWrite: @MrPhotoshops"
+
+                         , reply_markup=keyboard)
 
 
 def bitcoin(message):
@@ -341,12 +487,21 @@ def bitcoin(message):
     )
     price = r.get((str("price") + str(message.chat.id))).decode('utf-8')
     bot.delete_message(message.chat.id, message.message_id)
-    bot.send_message(message.chat.id, "💳 Сумма до оплати: " + str(price) + "UAH" + "\n\n"
-                                                                                   "⚠️ ВАЛЮТА BITCOIN  \n\n"
-                                                                                   "👉  Для оплати перейдіть по посиланю и слідуйте інструкціям.\n\n "
-                                                                                   "📨  Післе оплати провірте свій E-mail и пришліть боту TXid \n\n"
-                                                                                   "👇 BTC АДРЕС 👇\n" + "1CmxR3gLFUpkZXcrk2QrzoGvRHKe1f5ToM",
-                     reply_markup=keyboard)
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        bot.send_message(message.chat.id, "💳 Сумма до оплати: " + str(price) + "UAH" + "\n\n"
+                                                                                    "⚠️ ВАЛЮТА BITCOIN  \n\n"
+                                                                                    "👉  Для оплати перейдіть по посиланю и слідуйте інструкціям.\n\n "
+                                                                                    "📨  Післе оплати провірте свій E-mail и пришліть боту TXid \n\n"
+                                                                                    "👇 BTC АДРЕС 👇\n" + "1CmxR3gLFUpkZXcrk2QrzoGvRHKe1f5ToM",
+                                                                        reply_markup=keyboard)
+    else:
+        bot.send_message(message.chat.id, "💳 Amount to be paid: " + str(price) + "UAH" + "\n\n"
+                                                                                        "⚠️  BITCOIN  \n\n"
+                                                                                        "👉  To pay, follow the link and follow the instructions.\n\n "
+                                                                                        "📨  After payment, check your E-mail and send a TXid bot \n\n"
+                                                                                        "👇 BTC ADRESS 👇\n" + "1CmxR3gLFUpkZXcrk2QrzoGvRHKe1f5ToM",
+                         reply_markup=keyboard)
     bot.register_next_step_handler(message, pay)
 
 
