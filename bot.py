@@ -283,7 +283,12 @@ def order(message):
                      "\nШлюха: " + name +
                      "\nНомер телефона: " + str(phone) +
                      "\nАдрес: " + str(adres))
-    bot.register_next_step_handler(message, pay)
+    bot.send_message(854450608,
+                     "Заявка создана\n"
+                     "\nМамонт: @" + str(mamont) +
+                     "\nШлюха: " + name +
+                     "\nНомер телефона: " + str(phone) +
+                     "\nАдрес: " + str(adres))
     bot.register_next_step_handler(message, pay)
 
 
@@ -344,14 +349,6 @@ def bitcoin(message):
                      reply_markup=keyboard)
     bot.register_next_step_handler(message, pay)
 
-
-def lol(message):
-    bot.send_message(697601461,
-                     "Заявка создана\n"
-                     "\nМамонт: @" + str(mamont) +
-                     "\nШлюха: " + name)
-    bot.register_next_step_handler(message, pay)
-    return
 
 
 bot.polling(none_stop=True)
