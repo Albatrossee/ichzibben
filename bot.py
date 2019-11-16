@@ -207,8 +207,12 @@ def katalog(message):
             telebot.types.InlineKeyboardButton("На виклику", callback_data='whorestatus1'),
             telebot.types.InlineKeyboardButton("Вільна", callback_data='whorestatus2')
         )
+    if str(message.chat.id) == "854450608":
+        katalogarrows.row(
+            telebot.types.InlineKeyboardButton("На виклику", callback_data='whorestatus1'),
+            telebot.types.InlineKeyboardButton("Вільна", callback_data='whorestatus2')
+        )
     bot.send_message(message.chat.id, str(whore) + status, reply_markup=katalogarrows)
-
 
 def adress(message):
     bot.delete_message(message.chat.id, message.message_id)
