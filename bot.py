@@ -82,8 +82,9 @@ def menu(message):
         bot.clear_step_handler_by_chat_id(message.chat.id)
         language = r.get('language' + str(message.chat.id)).decode('utf-8')
         user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
-        bot.send_message(697601461, "@" + str(user) + " перешел в меню")
-        bot.send_message(854450608, "@" + str(user) + " перешел в меню")
+        bot.send_message(697601461, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
+        bot.send_message(854450608, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
+        
         centum = telebot.types.InlineKeyboardMarkup()
         if str(language) == 'ukr':
             centum.row(
@@ -131,8 +132,8 @@ def menu(message):
         bot.clear_step_handler_by_chat_id(message.chat.id)
         language = r.get('language' + str(message.chat.id)).decode('utf-8')
         user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
-        bot.send_message(697601461, "@" + str(user) + " перешел в меню")
-        bot.send_message(854450608, "@" + str(user) + " перешел в меню")
+        bot.send_message(697601461, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
+        bot.send_message(854450608, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
         centum = telebot.types.InlineKeyboardMarkup()
         if str(language) == 'ukr':
             centum.row(
@@ -258,8 +259,8 @@ def katalog(message):
     user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
 
     bot.delete_message(message.chat.id, message.message_id)
-    bot.send_message(697601461, "@" + str(user) + "\nВтыкает на " + str(whore))
-    bot.send_message(854450608, "@" + str(user) + "\nВтыкает на " + str(whore))
+    bot.send_message(697601461, "@" + str(user) + "ID @" + str(message.chat.id) + "\nВтыкает на " + str(whore))
+    bot.send_message(854450608, "@" + str(user) + "ID @" + str(message.chat.id) + "\nВтыкает на " + str(whore))
     language = r.get('language' + str(message.chat.id)).decode('utf-8')
     if str(language) == 'ukr':
         katalogarrows.row(
