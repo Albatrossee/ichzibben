@@ -22,7 +22,7 @@ house = emojize(':house:', use_aliases=True)
 r.set(int(0), "Лиза\nhttps://telegra.ph/file/910f197fa35c0089c5d7d.png"
               "\n\nStatus: ")
 
-r.set(int(1), "Вікторія\nhttps://telegra.ph/file/23cc6900ea637a352acc4.jpg"
+r.set(int(1), "Вікторія\nhttps://telegra.ph/file/2d58c84a11d87e2f450dd.png"
               "\n\nStatus: ")
 
 r.set(int(2), "Лера\nhttps://telegra.ph/file/edb9b4926ad16859127ba.jpg"
@@ -35,7 +35,7 @@ r.set(int(4), "Власта\nhttps://telegra.ph/file/806d69ba6efd591b9bcb4.jpg"
               "\n\nStatus: ")
 
 r.set(int(100), "Лиза\nhttps://telegra.ph/file/c9bddef82a056c7d3b25f.jpg")
-r.set(int(101), "Виктория\nhttps://telegra.ph/file/23cc6900ea637a352acc4.jpg")
+r.set(int(101), "Виктория\nhttps://telegra.ph/file/2d58c84a11d87e2f450dd.png")
 r.set(int(102), "Лера\nhttps://telegra.ph/file/edb9b4926ad16859127ba.jpg")
 r.set(int(103), "Анастасия\nhttps://telegra.ph/file/b386cd099e3f30e944c2f.jpg")
 r.set(int(104), "Лиза\nhttps://telegra.ph/file/c9bddef82a056c7d3b25f.jpg")
