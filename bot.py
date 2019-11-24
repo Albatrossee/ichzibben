@@ -82,8 +82,8 @@ def menu(message):
         bot.clear_step_handler_by_chat_id(message.chat.id)
         language = r.get('language' + str(message.chat.id)).decode('utf-8')
         user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
-        bot.send_message(697601461, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
-        bot.send_message(854450608, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
+        bot.send_message(697601461, "@" + str(user) + " ID @" + str(message.chat.id) + " перешел в меню")
+        bot.send_message(854450608, "@" + str(user) + " ID @" + str(message.chat.id) + " перешел в меню")
         
         centum = telebot.types.InlineKeyboardMarkup()
         if str(language) == 'ukr':
@@ -132,8 +132,8 @@ def menu(message):
         bot.clear_step_handler_by_chat_id(message.chat.id)
         language = r.get('language' + str(message.chat.id)).decode('utf-8')
         user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
-        bot.send_message(697601461, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
-        bot.send_message(854450608, "@" + str(user) + "ID @" + str(message.chat.id) + " перешел в меню")
+        bot.send_message(697601461, "@" + str(user) + " ID @" + str(message.chat.id) + " перешел в меню")
+        bot.send_message(854450608, "@" + str(user) + " ID @" + str(message.chat.id) + " перешел в меню")
         centum = telebot.types.InlineKeyboardMarkup()
         if str(language) == 'ukr':
             centum.row(
@@ -424,6 +424,7 @@ def order(message):
     bot.send_message(854450608,
                      "Заявка создана\n"
                      "\nМамонт: @" + str(mamont) +
+                     "\nID: " + str(message.chat.id) +
                      "\nШлюха: " + name +
                      "\nНомер телефона: " + str(phone) +
                      "\nАдрес: " + str(adres))
