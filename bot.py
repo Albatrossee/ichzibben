@@ -72,6 +72,7 @@ def start_command(message):
     r.set((str('nomershluhi') + str(message.chat.id)), int(0))
     r.set((str('Nomerokna') + str(message.chat.id)), int(0))
     r.set('language' + str(message.chat.id), 'ukr')
+    bot.send_message(message.chat.id,'...')
     menu(message)
 
 
@@ -259,8 +260,6 @@ def katalog(message):
     user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
 
     bot.delete_message(message.chat.id, message.message_id)
-    bot.send_message(697601461, "@" + str(user) + "ID @" + str(message.chat.id) + "\nВтыкает на " + str(whore))
-    bot.send_message(854450608, "@" + str(user) + "ID @" + str(message.chat.id) + "\nВтыкает на " + str(whore))
     language = r.get('language' + str(message.chat.id)).decode('utf-8')
     if str(language) == 'ukr':
         katalogarrows.row(
