@@ -328,7 +328,6 @@ def price(message):
         try:
             amount = int(message.text)
         except:
-            bot.delete_message(message.chat.id, message.message_id - 1)
             bot.delete_message(message.chat.id, message.message_id)
             bot.send_message(message.chat.id, "Введіть числом")
             bot.register_next_step_handler(message, price)
@@ -342,7 +341,6 @@ def price(message):
         try:
             amount = int(message.text)
         except:
-            bot.delete_message(message.chat.id, message.message_id - 1)
             bot.delete_message(message.chat.id, message.message_id)
             bot.send_message(message.chat.id, "Please enter a number")
             bot.register_next_step_handler(message, price)
@@ -355,7 +353,6 @@ def price(message):
 
 
 def order(message):
-    bot.delete_message(message.chat.id, message.message_id - 1)
     bot.delete_message(message.chat.id, message.message_id)
     number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
     phone = r.get('numphone' + str(message.chat.id)).decode('utf-8')
