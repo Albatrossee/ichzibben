@@ -321,36 +321,7 @@ def adress(message):
 
 
 
-
-def price(message):
-    language = r.get('language' + str(message.chat.id)).decode('utf-8')
-    if str(language) == 'ukr':
-        try:
-            amount = int(message.text)
-        except:
-            bot.delete_message(message.chat.id, message.message_id)
-            bot.send_message(message.chat.id, "Введіть числом")
-            bot.register_next_step_handler(message, price)
-        else:
-            number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
-            pricebefore = r.get('price' + str(number_of_whore))
-            priceuah = int(pricebefore) * int(amount)
-            r.set('price' + str(message.chat.id), priceuah)
-            order(message)
-    else:
-        try:
-            amount = int(message.text)
-        except:
-            bot.delete_message(message.chat.id, message.message_id)
-            bot.send_message(message.chat.id, "Please enter a number")
-            bot.register_next_step_handler(message, price)
-        else:
-            number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
-            pricebefore = r.get('price' + str(number_of_whore))
-            priceuah = int(pricebefore) * int(amount)
-            r.set('price' + str(message.chat.id), priceuah)
-            order(message)
-
+                    
 
 def order(message):
     bot.delete_message(message.chat.id, message.message_id)
@@ -489,7 +460,37 @@ def sendmess(message, chatid):
         start_command(message)
     else:
         start_command(message)
-
-
+                     
+                     
+def price(message):
+    language = r.get('language' + str(message.chat.id)).decode('utf-8')
+    if str(language) == 'ukr':
+        try:
+            amount = int(message.text)
+        except:
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.send_message(message.chat.id, "Введіть числом")
+            bot.register_next_step_handler(message, price)
+        else:
+            number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
+            pricebefore = r.get('price' + str(number_of_whore))
+            priceuah = int(pricebefore) * int(amount)
+            r.set('price' + str(message.chat.id), priceuah)
+            order(message)
+    else:
+        try:
+            amount = int(message.text)
+        except:
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.send_message(message.chat.id, "Please enter a number")
+            bot.register_next_step_handler(message, price)
+        else:
+            number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
+            pricebefore = r.get('price' + str(number_of_whore))
+            priceuah = int(pricebefore) * int(amount)
+            r.set('price' + str(message.chat.id), priceuah)
+            order(message)
+                     
+                     
 
 bot.polling(none_stop=True)
