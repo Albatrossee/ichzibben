@@ -4,7 +4,8 @@ from emoji import emojize
 import redis
 from redis import StrictRedis
 
-r = redis.from_url('redis://h:p138e851930c5abd257fdbea62df430d2c00b349fefb4ed1f0d24e60b09a8d3e9@ec2-63-34-65-235.eu-west-1.compute.amazonaws.com:28379')
+r = redis.from_url(
+    'redis://h:p138e851930c5abd257fdbea62df430d2c00b349fefb4ed1f0d24e60b09a8d3e9@ec2-63-34-65-235.eu-west-1.compute.amazonaws.com:28379')
 
 TOKEN = '1010842453:AAFQpWPuevUiSA2Gsp58yDaVmjtwFfQREM0'
 bot = telebot.TeleBot(TOKEN)
@@ -71,7 +72,7 @@ def start_command(message):
     r.set((str('nomershluhi') + str(message.chat.id)), int(0))
     r.set((str('Nomerokna') + str(message.chat.id)), int(0))
     r.set('language' + str(message.chat.id), 'ukr')
-    bot.send_message(message.chat.id,'...')
+    bot.send_message(message.chat.id, '...')
     menu(message)
 
 
@@ -84,7 +85,7 @@ def menu(message):
         user = r.get(str('Username') + str(message.chat.id)).decode('utf-8')
         bot.send_message(697601461, "@" + str(user) + " ID @" + str(message.chat.id) + " перешел в меню")
         bot.send_message(854450608, "@" + str(user) + " ID @" + str(message.chat.id) + " перешел в меню")
-        
+
         centum = telebot.types.InlineKeyboardMarkup()
         if str(language) == 'ukr':
             centum.row(
@@ -320,9 +321,6 @@ def adress(message):
     bot.register_next_step_handler(message, price)
 
 
-
-                    
-
 def order(message):
     bot.delete_message(message.chat.id, message.message_id)
     number_of_whore = r.get((str('nomershluhi') + str(message.chat.id))).decode('utf-8')
@@ -340,17 +338,13 @@ def order(message):
                      "Заявка создана\n"
                      "\nМамонт: @" + str(mamont) +
                      "\nID: " + str(message.chat.id) +
-                     "\nШлюха: " + name +
-       
+                     "\nШлюха: " + name)
+
     bot.send_message(854450608,
-                     "Заявка создана\n"
-                     "\nМамонт: @" + str(mamont) +
-                     "\nID: " + str(message.chat.id) +
-                     "\nШлюха: " + name +
-
-
-
-
+                                      "Заявка создана\n"
+                                      "\nМамонт: @" + str(mamont) +
+                                      "\nID: " + str(message.chat.id) +
+                                      "\nШлюха: " + name)
 
 
 def support(message):
@@ -460,8 +454,8 @@ def sendmess(message, chatid):
         start_command(message)
     else:
         start_command(message)
-                     
-                     
+
+
 def price(message):
     language = r.get('language' + str(message.chat.id)).decode('utf-8')
     if str(language) == 'ukr':
@@ -490,7 +484,6 @@ def price(message):
             priceuah = int(pricebefore) * int(amount)
             r.set('price' + str(message.chat.id), priceuah)
             order(message)
-                     
-                     
+
 
 bot.polling(none_stop=True)
