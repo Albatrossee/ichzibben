@@ -331,7 +331,7 @@ def order(message):
     messto = telebot.types.InlineKeyboardMarkup()
     language = r.get('language' + str(message.chat.id)).decode('utf-8')
     bot.send_message(message.chat.id,
-                     "Очікуйте на повідомлення від оператора. Зазвичай це триває 10-15хв" +
+                     "Очікуйте на повідомлення від оператора. Зазвичай це триває 10-15хв\n" +
                      str(name) +
                      "\nЦіна: " + str(priceuah) + "UAH")
     bot.send_message(697601461,
