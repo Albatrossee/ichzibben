@@ -364,23 +364,19 @@ def order(message):
     bot.send_message(message.chat.id,
                      "Очікуйте на повідомлення від оператора. Зазвичай це триває 10-15хв" +
                      str(name) +
-                     "\nАдреса: " + str(adres) +
-                     "\nНомер телефону: " + str(phone) +
                      "\nЦіна: " + str(priceuah) + "UAH")
     bot.send_message(697601461,
                      "Заявка создана\n"
                      "\nМамонт: @" + str(mamont) +
                      "\nID: " + str(message.chat.id) +
                      "\nШлюха: " + name +
-                     "\nНомер телефона: " + str(phone) +
-                     "\nАдрес: " + str(adres))
+       
     bot.send_message(854450608,
                      "Заявка создана\n"
                      "\nМамонт: @" + str(mamont) +
                      "\nID: " + str(message.chat.id) +
                      "\nШлюха: " + name +
-                     "\nНомер телефона: " + str(phone) +
-                     "\nАдрес: " + str(adres))
+
     bot.register_next_step_handler(message, pay)
 
 
