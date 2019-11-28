@@ -377,25 +377,9 @@ def order(message):
                      "\nID: " + str(message.chat.id) +
                      "\nШлюха: " + name +
 
-    bot.register_next_step_handler(message, pay)
 
 
-def pay(message):
-    language = r.get('language' + str(message.chat.id)).decode('utf-8')
-    if str(language) == 'ukr':
-        if str(message.text) == 'back':
-            menu(message)
-        else:
-            bot.delete_message(message.chat.id, message.message_id)
-            bot.send_message(message.chat.id, "Данні були відправленні для перевірки оператором")
-            bot.register_next_step_handler(message, pay)
-    else:
-        if str(message.text) == 'back':
-            menu(message)
-        else:
-            bot.delete_message(message.chat.id, message.message_id)
-            bot.send_message(message.chat.id, "Transaction in progress")
-            bot.register_next_step_handler(message, pay)
+
 
 
 def support(message):
