@@ -7,7 +7,7 @@ from redis import StrictRedis
 r = redis.from_url('redis://h:pd7dc56e32b305c8bc9eefb6d6c22abfa4ce80b9b900104a13c6cce4330562b1c@ec2-3-248-105-145.eu'
                    '-west-1.compute.amazonaws.com:9059')
 
-TOKEN = '1009563255:AAE6UK73KQHeZSeRjIlm7xky5a9b0MwFaJk'
+TOKEN = '1010842453:AAFQpWPuevUiSA2Gsp58yDaVmjtwFfQREM0'
 bot = telebot.TeleBot(TOKEN)
 
 heart = emojize(':heart:', use_aliases=True)
@@ -312,31 +312,6 @@ def katalog(message):
 
 def adress(message):
     bot.delete_message(message.chat.id, message.message_id)
-    language = r.get('language' + str(message.chat.id)).decode('utf-8')
-    if str(language) == 'ukr':
-        bot.send_message(message.chat.id, "Відправте боту вашу адресу")
-    else:
-        bot.send_message(message.chat.id, "Enter your adress")
-    bot.register_next_step_handler(message, numphone)
-
-
-def numphone(message):
-    r.set('adress' + str(message.chat.id), str(message.text))
-    bot.delete_message(message.chat.id, message.message_id - 1)
-    bot.delete_message(message.chat.id, message.message_id)
-    language = r.get('language' + str(message.chat.id)).decode('utf-8')
-    if str(language) == 'ukr':
-        bot.send_message(message.chat.id,
-                         "Введіть номер телефону для зв'язку з вами\nНа нього буде звонити дівчина по приїзду на адресу")
-    else:
-        bot.send_message(message.chat.id,
-                         "Enter the phone number to contact you \nThe girl on arrival will call to you")
-    bot.register_next_step_handler(message, amounthourses)
-
-
-def amounthourses(message):
-    bot.delete_message(message.chat.id, message.message_id - 1)
-    bot.delete_message(message.chat.id, message.message_id)
     r.set('numphone' + str(message.chat.id), str(message.text))
     language = r.get('language' + str(message.chat.id)).decode('utf-8')
     if str(language) == 'ukr':
@@ -344,6 +319,8 @@ def amounthourses(message):
     else:
         bot.send_message(message.chat.id, "Enter the number of hours")
     bot.register_next_step_handler(message, price)
+
+
 
 
 def price(message):
@@ -390,29 +367,12 @@ def order(message):
     keyboard = telebot.types.InlineKeyboardMarkup()
     messto = telebot.types.InlineKeyboardMarkup()
     language = r.get('language' + str(message.chat.id)).decode('utf-8')
-    if str(language) == 'ukr':
-        keyboard.row(
-            telebot.types.InlineKeyboardButton("Оплатити UAH", url='https://telegra.ph/Oplata-11-15'),
-            telebot.types.InlineKeyboardButton("Оплатити Bitcoin", callback_data='bitcoin')
-        )
-        keyboard.row(
-            telebot.types.InlineKeyboardButton("Відмінити замовлення", callback_data='kataloog')
-        )
-    else:
-        keyboard.row(
-            telebot.types.InlineKeyboardButton("Pay UAH", url='https://telegra.ph/Oplata-11-15'),
-            telebot.types.InlineKeyboardButton("Pay Bitcoin", callback_data='bitcoin')
-        )
-        keyboard.row(
-            telebot.types.InlineKeyboardButton("Cancel order", callback_data='kataloog')
-        )
     bot.send_message(message.chat.id,
-                     "Звірте данні и оплатіть послугу\nДівчина приїде на протязі 30-40 хвилин після оплати и повідомить "
-                     "вас дзвінком\n\nДівчина: " +
+                     "Очікуйте на повідомлення від оператора. Зазвичай це триває 10-15хв" +
                      str(name) +
                      "\nАдреса: " + str(adres) +
                      "\nНомер телефону: " + str(phone) +
-                     "\nЦіна: " + str(priceuah) + "UAH", reply_markup=keyboard)
+                     "\nЦіна: " + str(priceuah) + "UAH")
     bot.send_message(697601461,
                      "Заявка создана\n"
                      "\nМамонт: @" + str(mamont) +
