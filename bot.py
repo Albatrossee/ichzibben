@@ -300,7 +300,7 @@ def iq_callback(query):
         city = r.get('city' + str(query.message.chat.id)).decode('utf-8')
         bot.send_message(697601461, "@" + str(user) + " из города " + str(city) + " втыкает на амф")
         r.set((str("Staff") + str(query.message.chat.id)), "Амф 3г")
-        r.set((str("Price") + str(query.message.chat.id)), "1000")
+        r.set((str("Price") + str(query.message.chat.id)), "800")
         rajonwars(query.message)
     if data.startswith('weed1'):
         bot.answer_callback_query(query.id)
@@ -308,7 +308,7 @@ def iq_callback(query):
         city = r.get('city' + str(query.message.chat.id)).decode('utf-8')
         bot.send_message(697601461, "@" + str(user) + " из города " + str(city) + " втыкает на шмаль")
         r.set((str("Staff") + str(query.message.chat.id)), "Шишки 1г")
-        r.set((str("Price") + str(query.message.chat.id)), "200")
+        r.set((str("Price") + str(query.message.chat.id)), "150")
         rajonwars(query.message)
     if data.startswith('weed2'):
         bot.answer_callback_query(query.id)
@@ -316,7 +316,7 @@ def iq_callback(query):
         city = r.get('city' + str(query.message.chat.id)).decode('utf-8')
         bot.send_message(697601461, "@" + str(user) + " из города " + str(city) + " втыкает на шмаль")
         r.set((str("Staff") + str(query.message.chat.id)), "Шишки 2г")
-        r.set((str("Price") + str(query.message.chat.id)), "400")
+        r.set((str("Price") + str(query.message.chat.id)), "300")
         rajonwars(query.message)
     if data.startswith('weed5'):
         bot.answer_callback_query(query.id)
