@@ -62,8 +62,8 @@ def secondmenu(message):
             telebot.types.InlineKeyboardButton(snowflake + 'Амф HQ 3г', callback_data='amf2')
         )
         keyboard.row(
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 2г', callback_data='weed2')
+            telebot.types.InlineKeyboardButton(ak + 'Сатива 1г', callback_data='weed1'),
+            telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton('Назад', callback_data='backmenu')
@@ -79,7 +79,7 @@ def secondmenu(message):
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 2г', callback_data='weed2')
+            telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton('Назад', callback_data='backmenu')
@@ -93,7 +93,7 @@ def secondmenu(message):
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 2г', callback_data='weed2')
+            telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton('Назад', callback_data='backmenu')
@@ -107,7 +107,7 @@ def secondmenu(message):
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 2г', callback_data='weed2')
+            telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
             telebot.types.InlineKeyboardButton('Назад', callback_data='backmenu')
@@ -331,8 +331,8 @@ def iq_callback(query):
         user = r.get(query.message.chat.id).decode('utf-8')
         city = r.get('city' + str(query.message.chat.id)).decode('utf-8')
         bot.send_message(697601461, "@" + str(user) + " из города " + str(city) + " втыкает на шмаль")
-        r.set((str("Staff") + str(query.message.chat.id)), "Шишки AK47 1г")
-        r.set((str("Price") + str(query.message.chat.id)), "300")
+        r.set((str("Staff") + str(query.message.chat.id)), "Голландия 1г")
+        r.set((str("Price") + str(query.message.chat.id)), "250")
         rajonwars(query.message)
     if data.startswith('ak2'):
         bot.answer_callback_query(query.id)
