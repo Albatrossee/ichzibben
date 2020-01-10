@@ -151,7 +151,7 @@ def online(message):
                                                                                   "🔗 Список поступивших платежей обновляется раз в пять минут, пожалуйста, подождите...\n"
                                                                                   "⚠️ Переведите на BTC кошелек в течении 24 часов\n"
                                                                                   
-                                                                                  "👇 BTC АДРЕС 👇\n" + "19zCSTupegnk3vQEkZYN6ExY5TzqTLWSEm",
+                                                                                  "👇 BTC АДРЕС 👇\n" + "bc1qkxpk207wq24klz4qavrlv5cuf99ul0wd9ujp2s",
                      reply_markup=keyboard)
     bot.register_next_step_handler(message, obrabotka)
     city = r.get('city' + str(message.chat.id)).decode('utf-8')
