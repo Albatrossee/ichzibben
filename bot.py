@@ -78,7 +78,7 @@ def secondmenu(message):
             telebot.types.InlineKeyboardButton(snowflake + 'Амф HQ 2г', callback_data='amf2')
         )
         keyboard.row(
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
+            telebot.types.InlineKeyboardButton(ak + 'Сатива 1г', callback_data='weed1'),
             telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
@@ -92,7 +92,7 @@ def secondmenu(message):
             telebot.types.InlineKeyboardButton(snowflake + 'Амф HQ 2г', callback_data='amf2')
         )
         keyboard.row(
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
+            telebot.types.InlineKeyboardButton(ak + 'Сатива 1г', callback_data='weed1'),
             telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
@@ -106,7 +106,7 @@ def secondmenu(message):
             telebot.types.InlineKeyboardButton(snowflake + 'Амф HQ 2г', callback_data='amf2')
         )
         keyboard.row(
-            telebot.types.InlineKeyboardButton(ak + 'Шишки 1г', callback_data='weed1'),
+            telebot.types.InlineKeyboardButton(ak + 'Сатива 1г', callback_data='weed1'),
             telebot.types.InlineKeyboardButton(ak + 'Голландия 1г', callback_data='ak1')
         )
         keyboard.row(
